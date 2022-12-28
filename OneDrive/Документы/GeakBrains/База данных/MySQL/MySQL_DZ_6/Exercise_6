@@ -1,0 +1,47 @@
+CREATE DATABASE Exercise_6;
+use Exercise_6;
+
+DELIMITER //
+CREATE FUNCTION time_period(seconds INT)
+RETURNS TEXT
+DETERMINISTIC
+BEGIN
+	DECLARE days, hours, minutes INT DEFAULT 0;
+    DECLARE sec_per_minutes INT DEFAULT 60;
+    DECLARE min_per_hours INT DEFAULT 60;
+    DECLARE hours_per_days INT DEFAULT 24;
+    
+    SET minutes = seconds DIV sec_per_minutes;
+    SET seconds = seconds % sec_per_minutes;
+    SET hours = minutes DIV min_per_hours;
+    SET minutes = minutes % min_per_hours;
+    SET days = hours DIV hours_per_days;
+    SET hours = hours % hours_per_days;
+
+    RETURN concat(days, ' days ', hours, ' hours ', minutes, ' minutes ', seconds, ' seconds ');
+END; //
+DELIMITER ;
+
+SELECT time_period(123456);
+
+
+DELIMITER //
+CREATE PROCEDURE get_even(`start` INT, `end` INT)
+BEGIN
+	DECLARE i INT DEFAULT `start`;
+    DECLARE res_str TEXT DEFAULT NULL;
+    WHILE  i<=`end` DO
+        IF i%2 = 0 THEN
+			IF res_str IS NULL THEN
+				SET res_str = concat(i);
+			ELSE
+				SET res_str = concat(res_str, ', ', i);
+			END IF;
+		END IF;
+        SET i = i + 1;
+    END WHILE;
+	SELECT res_str;
+END //
+DELIMITER ;
+
+CALL get_even(1, 10);
