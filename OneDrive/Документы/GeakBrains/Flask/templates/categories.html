@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }} - {{ category_data.cat_title }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<h4>Товары в категории {{ category_data.cat_title }}</h4>
+{% if goods %}
+<div class="row mb-3">
+        {% for good in goods %}
+        <div class="col-12 col-lg-4 mb-3">
+            <div class="card">
+                <img src={{ good.photo_link }} class="card-img-top" alt="good image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ good.name }}</h5>
+                    <p class="card-text">{{ good.description }}</p>
+                    <p class="card-text">Цена: {{ good.price }}</p>
+                    <a href="/goods/{{ good.good_id }}/" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+</div>
+{% else %}
+<p class="text">В этой категории товаров нет</p>
+{% endif %}
+{% endblock %}

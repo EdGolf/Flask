@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }} - {{ title }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<h4>Каталоги товаров</h4>
+<div class="row mb-3">
+    {% for category in categories %}
+    <div class="col-12 col-lg-4 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ category.cat_title }}</h5>
+                <p class="card-text">{{ category.cat_description }}</p>
+                <a href="/categories/{{ category.cat_id }}/" class="btn btn-primary">Перейти</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

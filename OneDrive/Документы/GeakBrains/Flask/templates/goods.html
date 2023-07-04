@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }} - {{ good_data.name }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<h4>{{ good_data.name }}</h4>
+{% if good_data %}
+<div class="col-12 mb-3">
+    <img src={{ good_data.photo_link }} class="card-img-top" alt="good image">
+    <div class="card-body">
+        <p class="card-text">{{ good_data.description }}</p>
+        <p class="card-text">Цена: {{ good_data.price }}</p>
+        <a href="#" class="btn btn-primary">Купить</a>
+    </div>
+</div>
+{% else %}
+<p class="text">Такого товара нет в каталоге</p>
+{% endif %}
+{% endblock %}
