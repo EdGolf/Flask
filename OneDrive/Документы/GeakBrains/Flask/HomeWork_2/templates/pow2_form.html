@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }} - {{ title }}
+{% endblock %}
+
+{% block content %}
+<h1>Посчитать квадрат числа</h1>
+{% if username %}
+<form method="post">
+    <div class="mb-3">
+        <label for="number" class="form-label">Введите число</label>
+        <input type="text" class="form-control" id="number" name="number">
+    </div>
+    <button type="submit" class="btn btn-primary">Отправить</button>
+</form>
+{% else %}
+<div class="alert alert-warning" role="alert">
+    Функция не доступна! Выполните вход!
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }} - {{ title }}
+{% endblock %}
+
+{% block content %}
+<h1>Вход</h1>
+{% if username %}
+<div class="alert alert-success" role="alert">
+    Вход уже выполнен. Для смены пользователя сначала нажмите "Выход"
+</div>
+{% else %}
+<form method="post">
+    <div class="mb-3">
+        <label for="username" class="form-label">Имя пользователя</label>
+        <input type="text" class="form-control" id="username" name="username">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+    </div>
+    <button type="submit" class="btn btn-primary">Отправить</button>
+</form>
+{% endif %}
+{% endblock %}

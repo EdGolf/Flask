@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }} - {{ title }}
+{% endblock %}
+
+{% block content %}
+<h1>Доступные функции</h1>
+{% if username %}
+<a type="button" href="{{ url_for('hello') }}" class="btn btn-outline-primary">Поздороваться</a>
+<a type="button" href="{{ url_for('pow2_get') }}" class="btn btn-outline-primary">Квадрат числа</a>
+{% else %}
+<div class="alert alert-warning" role="alert">
+    Функции не доступны! Выполните вход!
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }} - {{ title }}
+{% endblock %}
+
+{% block content %}
+<h1>Ошибка сервера</h1>
+
+<div class="alert alert-danger" role="alert">
+    Что-то пошло не так!
+</div>
+
+{% endblock %}

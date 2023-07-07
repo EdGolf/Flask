@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }} - {{ title }}
+{% endblock %}
+
+{% block content %}
+<h1>Приветствие</h1>
+{% if username %}
+<div class="alert alert-success" role="alert">
+    Привет, {{ username }}!
+</div>
+{% else %}
+<div class="alert alert-warning" role="alert">
+    Функция не доступна! Выполните вход!
+</div>
+{% endif %}
+{% endblock %}
