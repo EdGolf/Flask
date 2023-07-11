@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }} - {{ title }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<h1>Главная</h1>
+<a type="button" href="{{ url_for('register') }}" class="btn btn-outline-primary">Регистрация</a>
+{% endblock %}

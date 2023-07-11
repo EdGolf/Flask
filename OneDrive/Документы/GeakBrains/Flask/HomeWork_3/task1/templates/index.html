@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }} - {{ title }}
+{% endblock %}
+
+{% block content %}
+<h1>Главная</h1>
+<a type="button" href="{{ url_for('students') }}" class="btn btn-outline-primary">Студенты</a>
+<a type="button" href="{{ url_for('grades') }}" class="btn btn-outline-primary">Оценки</a>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }} - {{ title }}
+{% endblock %}
+
+{% block content %}
+<h1>Страница не найдена</h1>
+
+<div class="alert alert-danger" role="alert">
+    Страница не найдена!
+</div>
+
+{% endblock %}

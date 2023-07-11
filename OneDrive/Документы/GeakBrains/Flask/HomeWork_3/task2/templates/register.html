@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }} - {{ title }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<h1>Регистрация</h1>
+<form method="POST")>
+    {{ form.csrf_token }}
+    {% for field in form if field.name not in ['csrf_token', 'submit'] %}
+    <p>
+        {{ field.label }}{% if field.flags.required %}*{% endif %}
+        {{ field }}
+        {% if field.errors %}
+        {% for error in field.errors %}
+    <span class="alert alert-danger" role="alert">
+        {{ error }}
+    </span>
+    {% endfor %}
+    {% endif %}
+    </p>
+    {% endfor %}
+    <p>{{ form.submit() }} </p>
+</form>
+{% endblock %}
