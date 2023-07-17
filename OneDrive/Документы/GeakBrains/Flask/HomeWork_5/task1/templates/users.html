@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }} - {{ title }}
+{% endblock %}
+
+{% block content %}
+<h1>Пользователи</h1>
+
+<table class="table table-striped">
+    <thead class="table-dark">
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Имя</th>
+        <th scope="col">email</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for user in users %}
+    <tr>
+        <th>{{ user.id }}</th>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<form action="/users" method="post">
+    <div class="mb-3">
+        <label for="name" class="form-label">Иия</label>
+        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Пароль</label>
+        <input type="password" class="form-control" id="password" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+</form>
+
+{% endblock %}
